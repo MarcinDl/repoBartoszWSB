@@ -1,0 +1,29 @@
+{
+	"destination": [
+		{
+			"id": 1,
+			"value": "Los Angeles",
+			"desc": "Los Angeles",
+			"code": "LAX",
+			"lat": 34.052235,
+			"lon": -118.243683
+		},
+		{
+			"id": 2,
+			"value": "Berlin",
+			"desc": "Berlin",
+			"code": "BER",
+			"lat": 52.520008,
+			"lon":13.404954
+		},
+		{
+			"id": 3,
+			"value": "New York",
+			"desc": "New York",
+			"code": "JFK",
+			"lat": 40.730610,
+			"lon": -73.935242
+
+		}
+	]
+}

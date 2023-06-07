@@ -1,0 +1,796 @@
+@import './partials/mixins';
+@import './partials/colors';
+
+$navFont: 14px;
+
+.inputSelect {
+	@include inputStyle(200px, 17px, 12px);
+}
+.upper-div {
+	margin: 15px 0 10px;
+}
+.bottom-div {
+	margin-bottom: 20px;
+}
+
+.paragraph-style {
+	margin-bottom: 5px;
+	font-size: 15px;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	height: 100vh;
+	font-family: 'Montserrat', sans-serif;
+	@include imageCenter('/src/images/clouds640.jpg');
+}
+
+.navigation {
+	@include dispayFlex(space-around, center);
+	height: 75px;
+	background-color: #e2d5d573;
+	&__date-hour,
+	&__arrival-weather,
+	&__login {
+		width: 100px;
+	}
+	&__arrival-weather,
+	&__login {
+		@include flexCenter;
+	}
+	&__arrival-weather,
+	&__date-hour {
+		font-size: $navFont;
+		text-align: center;
+	}
+
+	&__date-hour {
+		@include dispayFlex(center, flex-start);
+		flex-direction: column;
+
+		&__date {
+			&--margin {
+				margin: 5px 0;
+				i {
+					margin-right: 5px;
+				}
+			}
+		}
+		&__time {
+			&--padding {
+				margin-bottom: 5px;
+				padding-bottom: 3px;
+				i {
+					margin-right: 5px;
+				}
+			}
+		}
+	}
+
+	&__login {
+		&__login-button {
+			&--colors {
+				padding: 7px 10px;
+				font-size: $navFont;
+				font-style: italic;
+				font-weight: bold;
+				color: $whiteColor;
+				background-color: $primaryColor;
+				border: 1px solid black;
+				border-radius: 5px;
+				box-shadow: 1px 1px 2px #fff;
+			}
+		}
+	}
+	&__login-panel {
+		@include posAbsuluteCenter();
+		@include dispayFlex(center, center);
+		@include imageCenter('/src/images/Sky640.jpg');
+		display: none;
+		height: 800px;
+		width: 90vw;
+		border-radius: 20px;
+		z-index: 5;
+
+		&__inputs {
+			position: relative;
+			@include flexCenter();
+			flex-direction: column;
+			width: 100%;
+			z-index: 5;
+			input {
+				margin: 10px 0;
+				padding: 5px;
+				width: 50%;
+			}
+			button {
+				margin-top: 20px;
+				padding: 10px 30px;
+				font-size: 15px;
+				font-weight: bold;
+				color: $whiteColor;
+				background-color: $primaryColor;
+				border: 2px solid $secondaryColor;
+				border-radius: 15px;
+				transition: background-color 1s, color 1s, border 1s;
+				&:hover {
+					color: royalblue;
+					background-color: $whiteColor;
+					border: 1px solid royalblue;
+				}
+			}
+			i {
+				position: absolute;
+				top: -60%;
+				right: 5%;
+				padding: 10px;
+				font-size: 30px;
+			}
+		}
+		&__error {
+			position: absolute;
+			top: -50%;
+			z-index: 6;
+			color: red;
+			font-size: 17px;
+		}
+	}
+}
+
+.header {
+	position: relative;
+	width: 100%;
+	height: 130px;
+	background-color: $primaryColor;
+	&__text {
+		@include posAbsuluteCenter();
+		width: 100%;
+		&__headline {
+			&--font {
+				font-size: 24px;
+				text-align: center;
+			}
+		}
+		&__paragraph {
+			&--style {
+				margin-top: 8px;
+				text-align: center;
+				font-size: 16px;
+			}
+		}
+	}
+}
+
+.container {
+	position: relative;
+	height: 650px;
+	// display: none;
+	&__panel {
+		height: 100%;
+		background-color: $secondaryColor;
+
+		&__flight-places,
+		&__passengers,
+		&__travel-date {
+			@include flexCenter();
+			flex-direction: column;
+		}
+		&__flight-places {
+			&__departure,
+			&__arrival {
+				@include flexCenter();
+				flex-direction: column;
+				width: 100%;
+			}
+		}
+
+		&__passengers {
+			&__adults,
+			&__childrens {
+				@include flexCenter();
+				flex-direction: column;
+				width: 100%;
+			}
+		}
+
+		&__travel-date {
+			&__departure-date,
+			&__return-date {
+				@include flexCenter();
+				flex-direction: column;
+				width: 100%;
+			}
+		}
+
+		&__luggage {
+			@include flexCenter();
+		}
+
+		&__submit-button {
+			position: absolute;
+			left: 50%;
+			bottom: 3%;
+			transform: translateX(-50%);
+			padding: 2px 10px;
+			font-size: 25px;
+			border-radius: 5px;
+			background-color: transparent;
+			color: rgb(65, 105, 225);
+		}
+
+		&__info {
+			background-color: $primaryColor;
+			font-size: 1rem;
+			padding: 5px 0;
+			text-align: center;
+		}
+	}
+
+	&__error {
+		display: none;
+		position: absolute;
+		bottom: 11%;
+		width: 100%;
+		font-size: 15px;
+		text-align: center;
+	}
+}
+.summary {
+	@include posAbsuluteCenter;
+	@include imageCenter('/src/images/clouds640.jpg');
+	@include dispayFlex(center, flex-start);
+	flex-direction: column;
+	display: none;
+	width: 100%;
+	&__informations {
+		&__header {
+			text-align: center;
+			font-style: italic;
+			font-weight: 700;
+			color: $primaryColor;
+		}
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		height: 30%;
+		width: 100%;
+		padding: 5px;
+		border: 10px double $primaryColor;
+		&__panel-first,
+		&__panel-second {
+			@include dispayFlex(space-between, flex-start);
+			flex-wrap: wrap;
+			margin-top: 5px;
+			padding: 7px 5px;
+			width: 100%;
+			background-color: $primaryColor;
+			color: rgb(233, 229, 229);
+			border-radius: 10px;
+			font-weight: 400;
+			div {
+				@include flexCenter;
+				flex-direction: column;
+				width: 110px;
+				text-align: center;
+				font-size: 14px;
+			}
+			i {
+				margin-bottom: 5px;
+			}
+		}
+
+		&__panel-first {
+			&__departure-date {
+				div {
+					flex-direction: row;
+					margin-bottom: 5px;
+					i {
+						margin: 0 5px;
+					}
+				}
+			}
+		}
+		&__panel-second {
+			&__return-date {
+				div {
+					flex-direction: row;
+					margin-bottom: 5px;
+					i {
+						margin: 0 5px;
+					}
+				}
+			}
+			&__passengers {
+				div {
+					display: inline-block;
+					margin: 2px 0;
+					i {
+						margin: 0 2px;
+					}
+				}
+			}
+		}
+	}
+	&__flights {
+		background-color: $secondaryColor;
+		height: 80%;
+		width: 100%;
+
+		&__flightInfo {
+			display: grid;
+			grid-template-columns: repeat(4, auto);
+			grid-template-rows: 1fr 3fr;
+			margin: 30px auto;
+			width: 90%;
+			height: 100px;
+			background-color: $primaryColor;
+			border-radius: 10px;
+			color: $whiteColor;
+			border: 1px solid $secondaryColor;
+			&__paragraph {
+				margin-top: 10px;
+				font-size: 16px;
+				text-align: center;
+			}
+		}
+		&__flightErrorInfo {
+			margin: 50px 20px 0;
+			font-size: 20px;
+			text-align: center;
+			font-weight: 700;
+		}
+	}
+}
+
+.footer {
+	height: 50px;
+	width: 100%;
+	background-color: $primaryColor;
+	border-top: 1px solid black;
+	&__rights {
+		margin-top: 5px;
+		padding-bottom: 7px;
+		font-style: italic;
+		font-size: 12px;
+		text-align: center;
+	}
+	.footer-links {
+		@include dispayFlex(center, center);
+		font-size: 10px;
+		margin-bottom: 10px;
+		&__link {
+			margin: 0 8px;
+			i {
+				margin-right: 5px;
+			}
+		}
+		a {
+			color: black;
+			text-decoration: none;
+			cursor: pointer;
+		}
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.upper-div,
+	.bottom-div {
+		margin: 0px;
+	}
+
+	.inputSelect {
+		@include inputStyle(260px, 25px, 18px);
+	}
+
+	.paragraph-style {
+		margin-bottom: 15px;
+		font-size: 20px;
+	}
+	body {
+		@include imageCenter('/src/images/clouds1280.jpg');
+	}
+
+	.navigation {
+		height: 100px;
+		&__date-hour,
+		&__arrival-weather,
+		&__login {
+			width: 140px;
+		}
+		&__date-hour,
+		&__arrival-weather {
+			font-size: 20px;
+			&__date {
+				&--margin {
+					margin: 15px 0;
+				}
+			}
+			&__time {
+				&--padding {
+					margin-bottom: 10px;
+				}
+			}
+		}
+
+		&__login {
+			&__login-button {
+				&--colors {
+					padding: 8px 15px;
+					font-size: 20px;
+				}
+			}
+		}
+		&__login-panel {
+			@include imageCenter('/src/images/sky1280.jpg');
+			height: 1000px;
+			&__inputs {
+				input {
+					margin: 20px 0;
+					padding: 10px;
+				}
+				button {
+					margin-top: 25px;
+					padding: 12px 40px;
+					font-size: 18px;
+				}
+			}
+			&__error {
+				font-size: 22px;
+			}
+		}
+	}
+
+	.header {
+		height: 165px;
+		&__text {
+			&__headline {
+				&--font {
+					font-size: 35px;
+				}
+			}
+			&__paragraph {
+				&--style {
+					margin-top: 25px;
+					font-size: 22px;
+				}
+			}
+		}
+	}
+
+	.container {
+		position: relative;
+		height: 900px;
+		&__panel {
+			&__flight-places,
+			&__passengers,
+			&__travel-date {
+				height: 170px;
+				flex-direction: row;
+			}
+
+			&__submit-button {
+				bottom: 5%;
+				padding: 8px 21px;
+				font-size: 32px;
+				border-radius: 15px;
+			}
+
+			&__luggage {
+				height: 120px;
+				&__info,
+				p {
+					margin-bottom: 20px;
+					font-size: 25px;
+				}
+			}
+			&__info {
+				background-color: $primaryColor;
+				font-size: 20px;
+				padding: 7px 0;
+				text-align: center;
+			}
+		}
+
+		&__error {
+			display: none;
+			bottom: 16%;
+			font-size: 22px;
+		}
+	}
+
+	.summary {
+		&__informations {
+			height: 30%;
+			&__header {
+				font-size: 30px;
+			}
+			&__panel-first,
+			&__panel-second {
+				padding: 10px 20px;
+				div {
+					width: 130px;
+					font-size: 16px;
+				}
+			}
+		}
+
+		&__flights {
+			&__flightInfo {
+				margin: 35px auto;
+				height: 130px;
+				&__paragraph {
+					margin-top: 15px;
+					font-size: 20px;
+				}
+			}
+			&__flightErrorInfo {
+				margin: 50px 15px 0;
+				font-size: 23px;
+			}
+		}
+	}
+
+	.footer {
+		height: 75px;
+		&__rights {
+			margin-top: 10px;
+			font-size: 18px;
+		}
+		.footer-links {
+			margin-top: 5px;
+			font-size: 13px;
+			&__link {
+				margin: 0 50px;
+				i {
+					margin-right: 10px;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 992px) {
+	.paragraph-style {
+		margin-bottom: 20px;
+		font-size: 25px;
+	}
+	.inputSelect {
+		@include inputStyle(400px, 25px, 20px);
+	}
+	body {
+		@include imageCenter('/src/images/clouds1920.jpg');
+		height: 100%;
+	}
+	.navigation {
+		height: 130px;
+		&__date-hour,
+		&__arrival-weather,
+		&__login {
+			width: 200px;
+		}
+		&__date-hour {
+			font-size: 20px;
+			&__date {
+				&--margin {
+					margin: 18px 0;
+				}
+			}
+			&__time {
+				&--padding {
+					padding-bottom: 3px;
+					margin-bottom: 10px;
+				}
+			}
+		}
+
+		&__login {
+			&__login-button {
+				&--colors {
+					font-size: 20px;
+					padding: 10px 20px;
+					transition: background-color 0.5s, color 0.5s;
+					&:hover {
+						padding: 9px 19px;
+						border: 2px solid black;
+						color: rgb(55, 101, 240);
+						background-color: transparent;
+					}
+				}
+			}
+		}
+		&__login-panel {
+			@include imageCenter('/src/images/sky1920.jpg');
+			height: 90vh;
+			width: 75vw;
+			&__inputs {
+				input {
+					padding: 10px;
+					font-size: 15px;
+				}
+				button {
+					padding: 15px 40px;
+					font-size: 25px;
+				}
+			}
+			&__error {
+				font-size: 25px;
+			}
+		}
+	}
+	.header {
+		height: 200px;
+		&__text {
+			&__headline {
+				&--font {
+					font-size: 38px;
+				}
+			}
+			&__paragraph {
+				&--style {
+					margin-top: 15px;
+					font-size: 25px;
+				}
+			}
+		}
+	}
+	.container {
+		height: 1000px;
+		&__panel {
+			&__flight-places,
+			&__passengers,
+			&__travel-date {
+				height: 190px;
+			}
+			&__luggage {
+				height: 120px;
+			}
+			&__submit-button {
+				font-size: 35px;
+				bottom: 5%;
+				transition: padding 0.5s, color 0.5s, background-color 0.5s;
+				&:hover {
+					> #icon {
+						animation: discoverIcon 0.5s;
+						animation-fill-mode: forwards;
+					}
+					padding: 8px 30px;
+					background-color: $primaryColor;
+					color: $whiteColor;
+				}
+			}
+			&__info {
+				font-size: 22px;
+			}
+		}
+		&__error {
+			bottom: 15%;
+			font-size: 25px;
+		}
+	}
+
+	.summary {
+		flex-direction: row;
+
+		&__informations {
+			justify-content: flex-start;
+			height: 100%;
+			width: 30%;
+			border: none;
+			&__header {
+				margin: 50px 0 15px;
+				color: royalblue;
+			}
+			&__panel-first,
+			&__panel-second {
+				margin: 15px 0;
+				background: none;
+				color: royalblue;
+				div {
+					display: inline;
+					margin: 10px 0;
+					width: 220px;
+					height: 50px;
+					line-height: 50px;
+					text-align: left;
+					font-size: 20px;
+				}
+				i {
+					text-align: left;
+					margin-right: 20px;
+				}
+			}
+		}
+		&__flights {
+			position: relative;
+			background-color: $secondaryColor;
+			height: 100%;
+			width: 80%;
+
+			&__flightInfo {
+				margin: 30px auto 20px;
+				height: 170px;
+				border: 4px solid royalblue;
+				border-radius: 20px;
+				background: none;
+
+				:first-child {
+					border-top-left-radius: 16px;
+				}
+				:nth-child(4) {
+					border-top-right-radius: 16px;
+				}
+				:nth-child(-n + 4) {
+					border-bottom: 2px outset royalblue;
+					background-color: royalblue;
+					color: $whiteColor;
+				}
+				&__paragraph {
+					@include flexCenter;
+					color: royalblue;
+					margin-top: 0;
+					font-size: 20px;
+				}
+			}
+			&__flightErrorInfo {
+				position: absolute;
+				top: 50%;
+				margin: 0 10px;
+				transform: translateY(-50%);
+			}
+		}
+	}
+	.footer {
+		height: 80px;
+		&__rights {
+			font-size: 20px;
+		}
+		.footer-links {
+			font-size: 15px;
+			&__link {
+				margin: 0 64px;
+			}
+		}
+	}
+}
+
+.errorAnimation {
+	animation: showError 1s;
+	animation-fill-mode: forwards;
+}
+
+.errorInfoAnimation {
+	animation: showInfoError 2s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes discoverIcon {
+	from {
+		font-size: 0;
+	}
+	to {
+		font-size: 40px;
+	}
+}
+
+@keyframes showError {
+	from {
+		left: -100%;
+	}
+	to {
+		left: 0%;
+		margin: 0 auto;
+	}
+}
+@keyframes showInfoError {
+	from {
+		top: -50%;
+	}
+	to {
+		top: 30%;
+	}
+}
